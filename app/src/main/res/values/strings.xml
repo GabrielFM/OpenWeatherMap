@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">OpenWeatherMap</string>
+    <string name="title_activity_maps">OpenWeatherMap</string>
+</resources>
