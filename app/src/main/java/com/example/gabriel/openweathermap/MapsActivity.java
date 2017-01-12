@@ -15,17 +15,18 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener {
-
-    private GoogleMap mMap;
-    private LatLng position;
-    private boolean isMarked;
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener{
+    //Variables Declaration
+    private GoogleMap mMap; //Map
+    private LatLng position; //Position of the marker
+    private boolean isMarked; //True if there is a marker on the map
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //There is no marker on the map at this point
         isMarked = false;
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -33,16 +34,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        //Set the button listener
         Button searchButton = (Button) findViewById(R.id.searchButton);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO
+                //Verify if there is a marker on the map
                 if(!isMarked){
                     Toast toast = Toast.makeText(MapsActivity.this, "No Place Marked", Toast.LENGTH_LONG);
                     toast.show();
                 }else{
+                    //Send the coordinates for the next activity
                     Intent intent = new Intent(MapsActivity.this, CitiesList.class);
+                    intent.putExtra("Lat", position.latitude);
+                    intent.putExtra("Lon", position.longitude);
                     startActivity(intent);
                 }
 
@@ -61,18 +66,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * installed Google Play services and returned to the app.
      */
 
-
+    //Initializing the map
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setOnMapClickListener(this);
-        mMap.setOnMapLongClickListener(this);
-        // Add a marker in Sydney and move the camera
-       /* LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
     }
 
+    //Place the marker and save the coordinates
     public void onMapClick(LatLng point){
         position = point;
         mMap.clear();
@@ -80,11 +81,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         isMarked = true;
 
     }
-
-    @Override
-    public void onMapLongClick(LatLng point) {
-        //mTapTextView.setText("long pressed, point=" + point);
-    }
-
 
 }

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">OpenWeatherMap</string>
     <string name="title_activity_maps">OpenWeatherMap</string>
+    <string name="api_weather_id">d6536ca79d35ecce687d322e4b27cd3b</string>
 </resources>
