@@ -10,7 +10,7 @@
         android:text="Teste"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:textColor="@color/black"/>
+        android:textColor="@color/colorPrimary"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,11 +19,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Max. Temperature: "/>
+            android:text="Max. Temperature: "
+            android:textColor="@color/black"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/maxTempText"/>
+            android:id="@+id/maxTempText"
+            android:textColor="@color/black"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -33,11 +35,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Min. Temperature: "/>
+            android:text="Min. Temperature: "
+            android:textColor="@color/black"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/minTempText"/>
+            android:id="@+id/minTempText"
+            android:textColor="@color/black"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -47,17 +51,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Weather Situation: "/>
+            android:text="Weather Situation: "
+            android:textColor="@color/black"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/weatherSituationText"/>
+            android:id="@+id/weatherSituationText"
+            android:textColor="@color/black"/>
     </LinearLayout>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/okButton"
         android:text="OK"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@color/black"
         android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>

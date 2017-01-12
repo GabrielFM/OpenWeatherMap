@@ -49,6 +49,7 @@ import java.util.List;
 public class CitiesList extends AppCompatActivity {
 
     private String url;
+    private String appID = "d6536ca79d35ecce687d322e4b27cd3b";
     private Double lat, lon;
     private String TAG = CitiesList.class.getSimpleName();
 
@@ -81,7 +82,7 @@ public class CitiesList extends AppCompatActivity {
         lon = extras.getDouble("Lon");
 
         //Request URL
-        url = "http://api.openweathermap.org/data/2.5/find?lat="+lat.toString()+"&lon="+lon.toString()+"&cnt=15&APPID="+"d6536ca79d35ecce687d322e4b27cd3b"+"&units=metric";
+        url = "http://api.openweathermap.org/data/2.5/find?lat="+lat.toString()+"&lon="+lon.toString()+"&cnt=15&APPID="+appID+"&units=metric";
 
         //JSON request
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
@@ -196,11 +197,16 @@ public class CitiesList extends AppCompatActivity {
                         }
 
                     }
+
+
+                //Problem with the connection
                 }, new Response.ErrorListener() {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // TODO Auto-generated method stub
+                        Toast.makeText(getApplicationContext(),"Unable to connect. Please, check your phone connection.",
+                                Toast.LENGTH_LONG).show();
+
 
                     }
                 });
